@@ -16,7 +16,7 @@
 		}
 		public function generate_img($mysqli){
 		// $this->caminho = "caminho";
-			$this->caminho = sha1(uniqid(time())).".jpg";
+			$this->caminho = sha1(uniqid(time())).".png";
 		
 		// gerar arquivo
 		    $binary=base64_decode($this->base);

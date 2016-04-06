@@ -1,11 +1,16 @@
+/*
+	Colors
+		blue logo: #6ccff6;
+*/
+
 /*style*/
 
 .navbar-logo{
 	margin-right: 20px;
 }
-
-
-
+#myNavbar span{
+	color: white;
+}
 
 /* Set black background color, white text and some padding */
 footer {
