@@ -1,4 +1,5 @@
 <?php
+	//The mysql conection script
 	$mysqli = new mysqli('localhost', 'root', '123456', 'Ambiento');
     if ($mysqli->connect_error) 
     {
