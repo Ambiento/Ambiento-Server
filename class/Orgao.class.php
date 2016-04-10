@@ -1,16 +1,7 @@
 <?php
-	include_once("Pessoa.class.php");
-	
-	class Orgao extends Pessoa{
+	class Orgao{
 		private $id;
 		private $endereco;
 		private $nome;
-
-		public function __construct(){
-			
-		}
-		public function cadastrar(){
-			
-		}
 	}
 ?>

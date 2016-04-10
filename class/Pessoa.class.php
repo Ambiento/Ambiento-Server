@@ -7,13 +7,12 @@
 		protected $senha;
 		protected $identificador;
 
-		public function __construct($_idPessoa, $_foto, $_nome, $_email, $_senha, $_identificador){
+		public function __construct($_idPessoa, $_foto, $_nome, $_email, $_senha){
 			$this->idPessoa = $_idPessoa;
 			$this->foto = $_foto;
 			$this->nome = $_nome;
 			$this->email = $_email;
 			$this->senha = $_senha;
-			$this->identificador = $_identificador;
 		}
 	    public function getIdPessoa(){
 	        return $this->idPessoa;
@@ -50,24 +49,7 @@
 	        $this->senha = $senha;
 	        return $this;
 	    }
-	    public function getIdentificador(){
-	        return $this->identificador;
-	    }
-	    protected function setIdentificador($identificador){
-	        $this->identificador = $identificador;
-	        return $this;
-	    }
-
-		protected function insertPessoa($mysqli){
-			//VERIFICAR SE O EMAIL JÁ NÃO ESTÁ CADASTRADO!
-			//primeiro insere uma pessoa
-			$query = "INSERT INTO Pessoa()".
-							"VALUES(NULL, '$this->foto', '$this->nome', '$this->email', ".
-								"'$this->senha', '$this->identificador')";
-			$mysqli->query($query);
-		}
 		protected function selectPessoa($mysqli){
-			//Autenticar a pessoa (esse método é chamado pelos filhos pra determinar quem é a pessoa que está logando)
 			$query = "SELECT * FROM Pessoa WHERE email = '$this->email'";
 		}
 	}
