@@ -14,3 +14,10 @@
 // 		}
 // 	});
 // });
+function session(){
+	console.log("Verificando Sessao");
+}
+
+$(document).ready(function() {
+	session();
+});
