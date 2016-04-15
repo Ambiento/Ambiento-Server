@@ -12,6 +12,7 @@
 		$_SESSION["img"] = $adm->getImg();
 		$_SESSION["idAdministrador"] = $adm->getIdAdministrador();
 		$_SESSION["idOrgao"] = $adm->getIdOrgao();
+		$_SESSION["singin"] = true;
 	}else{
 	// do not create section and make a response about it
 	}
