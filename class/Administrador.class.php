@@ -67,9 +67,10 @@
 		public function singin($mysqli){
 			$sql = "SELECT * FROM Administrador WHERE email = '$this->email' and senha = '$this->senha'";
 			$resultado = $mysqli->query($sql);
-			if (!empty($resultado)) {
+			$linha = $resultado->fetch_array();
+			print_r($linha);
+			if (!empty($linha)) {
 			// singin success
-				$linha = $resultado->fetch_array();
 				$this->loadAdm($linha["nome"], $linha["sobrenome"], $linha["img"], $linha["idAdministrador"], $linha["idOrgao"]);
 				return true;
 			}else{

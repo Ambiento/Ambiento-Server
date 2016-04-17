@@ -4,16 +4,23 @@
 */
 
 /*style*/
-
 .navbar-logo{
 	margin-right: 20px;
 }
-#myNavbar span{
+#myNavbar{
+	font-size: 11px;
+}
+.navbar{
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+#form_login span{
 	color: white;
 }
 
 /* Set black background color, white text and some padding */
-footer {
+footer{
 	background-color: #555;
 	color: white;
 	padding: 15px;

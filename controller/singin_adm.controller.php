@@ -3,8 +3,9 @@
 	include "../include/conexao.php";
 
 	$adm = new Administrador($_POST["email"], sha1($_POST["senha"]));
+	// print_r($adm);
 	if ($adm->singin($mysqli)) {	
-	// create section and cookies and make a response about it
+	// create section and cookies and make a response about it (JSON)
 		session_start();
 		$_SESSION["nome"] = $adm->getNome();
 		$_SESSION["sobrenome"] = $adm->getSobrenome();
@@ -14,7 +15,10 @@
 		$_SESSION["idOrgao"] = $adm->getIdOrgao();
 		$_SESSION["singin"] = true;
 	}else{
-	// do not create section and make a response about it
+	// do not create section and make a response about it (JSON)
+		session_start();
+		session_unset();
 	}
-	print_r($_SESSION);
+	// print_r($_SESSION);
+	header("location: ../index.html");
 ?>

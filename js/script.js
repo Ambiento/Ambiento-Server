@@ -16,6 +16,21 @@
 // });
 function session(){
 	console.log("Verificando Sessao");
+	$.ajax({
+		type: "POST",
+		dataType: "json",
+		url: "controller/verify_session.controller.php",
+		success: function(saida){
+			console.log("Sucesso na conexão!");
+			if (saida["logado"]) {
+				console.log("Sessão existe");
+				$("#myNavbar").html(saida["myNavbar"]);
+			}else{
+				console.log("Sessão não existe");
+				$("#myNavbar").html(saida["myNavbar"]);
+			}
+		}
+	});
 }
 
 $(document).ready(function() {
