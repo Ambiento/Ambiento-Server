@@ -13,7 +13,7 @@
 			$this->img = $_img;
 		}
 
-		public function __construct($_nome_usuario, $_cidade, $_estado, $_referencia_localizacao, $_descricao){
+		public function __construct($_nome_usuario=NULL, $_cidade=NULL, $_estado=NULL, $_referencia_localizacao=NULL, $_descricao=NULL){
 			$this->nome_usuario = $_nome_usuario;
 			$this->cidade = $_cidade;
 			$this->estado = $_estado;

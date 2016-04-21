@@ -9,7 +9,7 @@
 		private $img;
 		private $idOrgao;
 
-		public function __construct($_email, $_senha){
+		public function __construct($_email=NULL, $_senha=NULL){
 			$this->email = $_email;
 			$this->senha = $_senha;
 		}
@@ -77,6 +77,10 @@
 			// singin failed
 				return false;
 			}
+		}
+		public function select_ocorrencias($mysqli){
+			$sql = "SELECT * FROM Ocorrencias";
+			
 		}
 	}
 ?>

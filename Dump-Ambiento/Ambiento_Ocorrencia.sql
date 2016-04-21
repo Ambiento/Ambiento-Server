@@ -30,6 +30,8 @@ CREATE TABLE `Ocorrencia` (
   `referencia_localizacao` varchar(100) NOT NULL,
   `descricao` varchar(45) NOT NULL,
   `idImg` int(11) NOT NULL,
+  `latitude` varchar(45) NOT NULL,
+  `longitude` varchar(45) NOT NULL,
   PRIMARY KEY (`idOcorrencia`,`idImg`),
   KEY `fk_Ocorrencia_Img1_idx` (`idImg`),
   CONSTRAINT `fk_Ocorrencia_Img1` FOREIGN KEY (`idImg`) REFERENCES `Img` (`idImg`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -54,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-17 11:52:38
+-- Dump completed on 2016-04-21  2:02:18
