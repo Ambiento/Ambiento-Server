@@ -78,9 +78,19 @@
 				return false;
 			}
 		}
-		public function select_ocorrencias($mysqli){
-			$sql = "SELECT * FROM Ocorrencias";
-			
+		public function list_ocorrencias($mysqli){
+			$sql = "SELECT * FROM Ocorrencia";
+			$resultado = $mysqli->query($sql);
+			// print_r($resultado);
+			if ($resultado->num_rows > 0) {
+				while ($linha = $resultado->fetch_array()) {
+					$ocorrencias[] = new Ocorrencia();
+				}
+				//foreach para percorrer cada uma das ocorrencias e formatar em um array $response
+			}else{
+				$response[] = "Sem Ocorrencias!";
+			}
+			echo json_encode($linha);
 		}
 	}
 ?>

@@ -9,7 +9,6 @@ function load_ocorrencias(){
 		url: "controller/load_ocorrencias.controller.php",
 		success: function(saida){
 			console.log("OCORRENCIAS - Sucesso na conexão!");
-			block = false;
 		}
 	});
 }
@@ -25,6 +24,9 @@ function session(){
 			if (saida["logado"]) {
 				console.log("Sessão existe");
 				$("#myNavbar").html(saida["myNavbar"]);
+
+				$("#ocorrencias").addClass("active");
+				load_ocorrencias();
 			}else{
 				console.log("Sessão não existe");
 				$("#myNavbar").html(saida["myNavbar"]);
@@ -36,6 +38,7 @@ function session(){
 // Main execution
 $(document).ready(function() { 
 	session();
+	//reload
 	$(document).on('click', '#ocorrencias', function(){
 		$(this).addClass("active");
 		load_ocorrencias();

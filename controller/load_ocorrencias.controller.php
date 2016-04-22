@@ -4,7 +4,7 @@
 	include_once("../class/Administrador.class.php");
 	session_start();
 	$adm = new Administrador();
-	$adm->select_ocorrencias($mysqli);
-	print_r($adm);
+	$adm->list_ocorrencias($mysqli);
+	// print_r($adm);
 	// echo json_encode($response);
 ?>

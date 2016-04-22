@@ -1,3 +1,5 @@
+<img src="img/logo_ambiento.png">
+
 Bem vindo ao repositório do Ambiento server.
 
 Ambiento é uma plataforma de denuncia ambiental do meio urbano.
