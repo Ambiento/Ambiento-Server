@@ -83,14 +83,27 @@
 			$resultado = $mysqli->query($sql);
 			// print_r($resultado);
 			if ($resultado->num_rows > 0) {
-				while ($linha = $resultado->fetch_array()) {
-					$ocorrencias[] = new Ocorrencia();
+				for ($i=0; $linha = $resultado->fetch_array() ; $i++) { 
+					$response[$i]["idOcorrencia"] = $linha["idOcorrencia"];
+					$response[$i]["nome_usuario"] = $linha["nome_usuario"];
+					$response[$i]["cidade"] = $linha["cidade"];
+					$response[$i]["estado"] = $linha["estado"];
+					$response[$i]["referencia_localizacao"] = $linha["referencia_localizacao"];
+					$response[$i]["descricao"] = $linha["descricao"];
+					$response[$i]["latitude"] = $linha["latitude"];
+					$response[$i]["longitude"] = $linha["longitude"];
+					$response[$i]["id_img"] = $linha["idImg"];
 				}
 				//foreach para percorrer cada uma das ocorrencias e formatar em um array $response
+				// $ocorrencias[] = new Ocorrencia($linha["idOcorrencia"], $linha["nome_usuario"], $linha["cidade"], $linha["estado"], $linha["referencia_localizacao"], $linha["descricao"], $linha["latitude"], $linha["longitude"]);
+				// foreach ($ocorrencias as $key => $value) {
+				// 	$response[] = $value->toarray();
+				// }
+				// print_r($resultado->fetch_array());
 			}else{
 				$response[] = "Sem Ocorrencias!";
 			}
-			echo json_encode($linha);
+			echo json_encode($response);
 		}
 	}
 ?>

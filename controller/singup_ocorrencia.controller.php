@@ -4,7 +4,7 @@
 	include_once("../class/Ocorrencia.class.php");
 	include_once("../class/Img.class.php");
 	$img = new Img($_POST["img"]);
-	$ocorrencia = new Ocorrencia($_POST["nome"], $_POST["cidade"], $_POST["estado"], $_POST["referencia"], $_POST["descricao"]);
+	$ocorrencia = new Ocorrencia($_POST["nome"], $_POST["cidade"], $_POST["estado"], $_POST["referencia"], $_POST["descricao"], $_POST["latitude"], $_POST["longitude"]);
 	$img->generate_img($mysqli);
 	$ocorrencia->setImg($img);
 	$ocorrencia->insert_ocorrencia($mysqli);
