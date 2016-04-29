@@ -1,4 +1,5 @@
 <?php
+	include_once("Img.class.php");
 	// Classe de administrador
 	class Administrador{
 		private $idAdministrador;
@@ -81,6 +82,7 @@
 		public function list_ocorrencias($mysqli){
 			$sql = "SELECT * FROM Ocorrencia";
 			$resultado = $mysqli->query($sql);
+			$this->img = new Img();
 			// print_r($resultado);
 			if ($resultado->num_rows > 0) {
 				for ($i=0; $linha = $resultado->fetch_array() ; $i++) { 
@@ -92,18 +94,14 @@
 					$response[$i]["descricao"] = $linha["descricao"];
 					$response[$i]["latitude"] = $linha["latitude"];
 					$response[$i]["longitude"] = $linha["longitude"];
-					$response[$i]["id_img"] = $linha["idImg"];
+					// $response[$i]["id_img"] = $linha["idImg"];
+					$this->img->select_imgbyid($linha["idImg"], $mysqli);
+					$response[$i]["caminho_img"] = $this->img->getCaminho();
 				}
-				//foreach para percorrer cada uma das ocorrencias e formatar em um array $response
-				// $ocorrencias[] = new Ocorrencia($linha["idOcorrencia"], $linha["nome_usuario"], $linha["cidade"], $linha["estado"], $linha["referencia_localizacao"], $linha["descricao"], $linha["latitude"], $linha["longitude"]);
-				// foreach ($ocorrencias as $key => $value) {
-				// 	$response[] = $value->toarray();
-				// }
-				// print_r($resultado->fetch_array());
 			}else{
 				$response[] = "Sem Ocorrencias!";
 			}
-			echo json_encode($response);
+			return json_encode($response);
 		}
 	}
 ?>
