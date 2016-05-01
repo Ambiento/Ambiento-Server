@@ -1,19 +1,24 @@
 // functions and utilities
 function monta_ocorrencias(saida){
-	var ocorrencias = "<div id='ocorrencias'>";
+	var ocorrencias = "";
 	// estilo das ocorrencias
 	for (var i = 0; i < saida.length; i++) {
 		console.log(saida[i]);
+
 		ocorrencias = ocorrencias+"<div class='ocorrencia'>"+
-										"<h3>"+saida[i]["nome_usuario"]+"</h3>"+
-										"<p>Cidade: "+saida[i]["cidade"]+"</p>"+
-										"<p>Estado: "+saida[i]["estado"]+"</p>"+
-										"<p>Referência de Localização: "+saida[i]["referencia_localizacao"]+"</p>"+
-										"<h4>Descrição:</h4>"+
-										"<p>"+saida[i]["descricao"]+"</p>"+
-										"<p><img src='img/ocorrencias_upload/"+saida[i]["caminho_img"]+"'</img></p>"+
-										//add +detalhes/acompanhar
-									"</div>";
+							"<h3>"+saida[i]["nome_usuario"]+"</h3>"+
+							"<ul class='list-group'>"+
+								"<li class='list-group-item'>Cidade: "+saida[i]["cidade"]+"</li>"+
+								"<li class='list-group-item'>Estado: "+saida[i]["estado"]+"</li>"+
+								"<li class='list-group-item'>Referência de Localização: "+saida[i]["referencia_localizacao"]+"</li>"+
+								"<li class='list-group-item'>"+
+									"<h4>Descrição:</h4>"+
+									"<p>"+saida[i]["descricao"]+"</p>"+
+								"</li>"+
+								"<a href='#' class='list-group-item list-group-item-info'>+ Detalhes/Acompanhamento</a>"+
+							"</ul>"+
+							// "<img width='200' height='300' class='img-responsive img-thumbnail' src='img/ocorrencias_upload/"+saida[i]["caminho_img"]+"'</img>"+
+						"</div>";
 		/*
 		caminho_img
 	
@@ -44,9 +49,8 @@ function monta_ocorrencias(saida){
 			"fdd"
 		*/
 	}
-	ocorrencias = ocorrencias+"</div>";
 	console.log(ocorrencias);
-	// $("#ocorrencias_list").html(ocorrencias);
+	$("#ocorrencias_list").html(ocorrencias);
 }
 function load_ocorrencias(){
 	console.log("Carregando Ocorrencias...");
