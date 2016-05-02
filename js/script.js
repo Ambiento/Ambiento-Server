@@ -15,7 +15,7 @@ function monta_ocorrencias(saida){
 									"<h4>Descrição:</h4>"+
 									"<p>"+saida[i]["descricao"]+"</p>"+
 								"</li>"+
-								"<a href='#' class='list-group-item list-group-item-info'>+ Detalhes/Acompanhamento</a>"+
+								"<a href='acompanhar_ocorrencia.controller.php?idOcorrencia="+saida[i]["idOcorrencia"]+"' class='list-group-item list-group-item-info'>+ Detalhes/Acompanhamento</a>"+
 							"</ul>"+
 							// "<img width='200' height='300' class='img-responsive img-thumbnail' src='img/ocorrencias_upload/"+saida[i]["caminho_img"]+"'</img>"+
 						"</div>";
@@ -89,13 +89,3 @@ function session(){
 		}
 	});
 }
-
-// Main execution
-$(document).ready(function() { 
-	session();
-	//reload
-	$(document).on('click', '#ocorrencias', function(){
-		$(this).addClass("active");
-		load_ocorrencias();
-	});
-});

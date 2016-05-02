@@ -35,5 +35,8 @@
 			$mysqli->query($query);
 			$this->id_ocorrencia = $mysqli->insert_id;
 		}
+		public function generate_html(){
+			
+		}
 	}
 ?>
