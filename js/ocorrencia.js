@@ -1,4 +1,4 @@
 // Main execution
-$(document).ready(function() { 
-	
+$(document).ready(function() {
+		
 });

@@ -11,10 +11,12 @@
 		<script type='text/javascript' src='js/script.js'></script>
 		<link rel='stylesheet' href='css/style.css'>
 		<link rel='stylesheet' href='css/ocorrencia.css'>
-		<script src="http://maps.google.com/maps/api/js"></script>
-		<script type="text/javascript" src="js/gmap/gmap.js"></script>
-		<script type="text/javascript">
-			$(function() {
+		<script src='http://maps.google.com/maps/api/js'></script>
+		<script type='text/javascript' src='js/gmap/gmap.js'></script>
+		<script type='text/javascript'>
+			$(document).ready(function() {
+				var idOcorrencia = 1//id da ocorrencia 
+				load_comentarios(idOcorrencia);
 				map = new GMaps({
 					div: '#map',
 					lat: -29.959500,
@@ -25,13 +27,13 @@
 					lng: -51.623750,
 					title: 'Local',
 					infoWindow: {
-						content : "Local da Ocorrencia" 
+						content : 'Local da Ocorrencia' 
 					}
 				});
 			});
 		</script>
 
-  <style type="text/css">
+  <style type='text/css'>
     
   </style>
 	</head>
@@ -86,9 +88,13 @@
 						<h2>
 							Publicar
 						</h2>
-						<form>
-							<textarea rows="5" style="width:100%"></textarea>
+						<form id='form_comentario' method='POST' action='controller/publicar_comentario.controller.php?idOcorrencia=1'>
+							<textarea name='conteudo' required='true' rows='5' style='width:100%'></textarea>
+						   	<button id='bt_comentar' type='submit'>Comentar</button>
 						</form>
+					</div>
+					<div id='comentarios'>
+						
 					</div>
 				</div>
 			</div>

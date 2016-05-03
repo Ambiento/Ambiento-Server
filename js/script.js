@@ -1,4 +1,7 @@
 // functions and utilities
+function load_comentarios(idOcorrencia){
+	//ajax para carregar os comentários by idOcorrencia
+}
 function monta_ocorrencias(saida){
 	var ocorrencias = "";
 	// estilo das ocorrencias
