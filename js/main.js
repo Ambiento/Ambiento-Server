@@ -1,5 +1,3 @@
-
-
 // Main execution
 $(document).ready(function() { 
 	session();

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang='en'>
 	<head>
-		<title>Ambiento</title>
+		<title>Ocorrência - saida[i][nome_usuario]</title>
 		<meta charset='utf-8'>
 		<meta name='viewport' content='width=device-width, initial-scale=1'>
 		<link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
@@ -32,13 +32,8 @@
 				});
 			});
 		</script>
-
-  <style type='text/css'>
-    
-  </style>
 	</head>
 	<body>
-
 		<nav class='navbar navbar-inverse'>
 			<div class='container-fluid'>
 				<div class='navbar-header'>
@@ -47,25 +42,19 @@
 						<span class='icon-bar'></span>
 						<span class='icon-bar'></span>                        
 					</button>
+				</div>
+				<div class='collapse navbar-collapse' id='myNavbar'>
 					<ul class='nav navbar-nav'>
-						<li class=''><a href='index.html'><- Voltar</a></li>
+						<li class=''><a href='index.php'><- Voltar</a></li>
 						<li><a class='pull-right' href='controller/logout_adm.controller.php'>Sair</a></li>
 					</ul>
 				</div>
-				<div class='collapse navbar-collapse' id='myNavbar'>
-					
-				</div>
 			</div>
 		</nav>
-
 		<div class='container'>    
 			<div class='row'>
-				<div id='left' class='col-md-3'>	
-
-				</div>
-				<div id='center' class='col-md-9'>
+				<div id='center' class='col-md-7'>
 					<p id='status'>
-
 					</p>
 					<div class='ocorrencia'>
 						<h3>saida[i]['nome_usuario']</h3>
@@ -85,21 +74,21 @@
 								<div id='map'></div>
 							</li>
 						</ul>
-						<h2>
-							Publicar
-						</h2>
+						<h2>Publicar</h2>
 						<form id='form_comentario' method='POST' action='controller/publicar_comentario.controller.php?idOcorrencia=1'>
 							<textarea name='conteudo' required='true' rows='5' style='width:100%'></textarea>
 						   	<button id='bt_comentar' type='submit'>Comentar</button>
 						</form>
 					</div>
 					<div id='comentarios'>
-						
+						<!-- COMENTÁRIOS AQUI OU -->
 					</div>
+				</div>
+				<div id='comentarios' class='col-md-5'>	
+					<!-- AQUI -->
 				</div>
 			</div>
 		</div>
-
 		<footer class='container-fluid'>
 			<a rel='license' href='http://creativecommons.org/licenses/by-nc-nd/4.0/'><img alt='Licença Creative Commons' style='border-width:0' src='https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png' /></a><br /><span xmlns:dct='http://purl.org/dc/terms/' property='dct:title'><!-- Ambiento</span> de <span xmlns:cc='http://creativecommons.org/ns#' property='cc:attributionName'>Igor Phelype Guimarães</span> está licenciado com uma Licença <a rel='license' href='http://creativecommons.org/licenses/by-nc-nd/4.0/'>Creative Commons - Atribuição-NãoComercial-SemDerivações 4.0 Internacional --></a>
 		</footer>

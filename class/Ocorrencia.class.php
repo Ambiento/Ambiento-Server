@@ -9,6 +9,7 @@
 		private $img;
 		private $latitude;
 		private $longitude;
+		private $html;
 
 		// getters and setters
 		public function setImg(Img $_img){
@@ -34,9 +35,13 @@
 			echo $query;
 			$mysqli->query($query);
 			$this->id_ocorrencia = $mysqli->insert_id;
-		}
-		public function generate_html(){
 			
+			//generate html file
+			//padrão do nome do arquivo
+			$nome_arquivo = "$this->cidade-$this->id_ocorrencia".date("d/m/Y-H:i:s").".html";
+			$this->html = new Html($nome_arquivo, $this->id_ocorrencia);
+			$html->generate_html();
+			$html->insert_html($mysqli);
 		}
 	}
 ?>

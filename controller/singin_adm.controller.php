@@ -19,6 +19,6 @@
 		session_start();
 		session_unset();
 	}
-	// print_r($_SESSION);
-	header("location: ../index.html");
+	print_r($_SESSION);
+	header("location: ../index.php");
 ?>

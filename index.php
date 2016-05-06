@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 	<head>
 		<title>Ambiento</title>
 		<meta charset="utf-8">
@@ -21,7 +20,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>                        
 					</button>
-					<a class="navbar-logo" href="index.html"><img src="img/logo_ambiento.png"></a>
+					<a class="navbar-logo" href="index.php"><img src="img/logo_ambiento.png"></a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					
