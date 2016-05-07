@@ -4,12 +4,10 @@
 	*/
 	include("Model.class.php");
 	include("View.class.php");
-	include("Ocorrencia.class.php");
 
 	class Controller{
 		private $adm;
 		private $model;
-		private $view;
 
 		function __construct(){
 			$this->model = new Model();
@@ -45,8 +43,8 @@
 			$this->view->render("</html>");
 		}
 		public function cadastrar_ocorrencia(){
-			$model->setOcorrencia(new Ocorrencia(NULL, $_POST["nome"], $_POST["cidade"], $_POST["estado"], $_POST["referencia"], $_POST["descricao"], $_POST["latitude"], $_POST["longitude"]));
-			$model->insert_ocorrencia();	
+			$this->model->setOcorrencia(new Ocorrencia(NULL, $_POST["nome"], $_POST["cidade"], $_POST["estado"], $_POST["referencia"], $_POST["descricao"], $_POST["latitude"], $_POST["longitude"]));
+			$model->insert_ocorrencia();
 		}
 	}
 ?>

@@ -6,6 +6,7 @@
 	class Model{
 		private $database;
 		private $ocorrencia;
+		private $view;
 
 		function __construct(){
 			return;
@@ -54,9 +55,14 @@
 		    }
 		    return;
 		}
+		public function insert_html(){
+
+		}
 		public function insert_ocorrencia(){
 			$pdo = Database::conexao();
-			$sql = "INSERT INTO Ocorrencia VALUES(NULL, ".$this->Ocorrencia->getNome_usuario().", ".$this->Ocorrencia->getCidade().", ".$this->Ocorrencia->getEstado().", ".$this->Ocorrencia->getReferencia_localizacao().", ".$this->Ocorrencia->getDescricao().", ".$this->Ocorrencia->getmg->getId_img().", $this->Ocorrencia->getLatitude(), $this->Ocorrencia->getLongitude())"
+			$sql = "INSERT INTO Ocorrencia VALUES(NULL, ".$this->ocorrencia->getNome_usuario().", ".$this->ocorrencia->getCidade().", ".$this->ocorrencia->getEstado().", ".$this->ocorrencia->getReferencia_localizacao().", ".$this->ocorrencia->getDescricao().", ".$this->ocorrencia->getId_img().", ".$this->ocorrencia->getLatitude().", ".$this->ocorrencia->getLongitude().")";
+			// $query = $pdo->prepare($sql);
+			// $query->execute();
 		}
 	}
 ?>

@@ -33,7 +33,6 @@
 		    // Create File
 		    fwrite($file, $binary);
 		    fclose($file);
-		    echo 'Image upload complete, Please check your php file directory';
 
 			$query = "INSERT INTO Img VALUES(null, '$this->caminho')";
 			$mysqli->query($query);
