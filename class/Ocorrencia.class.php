@@ -12,11 +12,65 @@
 		private $html;
 
 		// getters and setters
-		public function setImg(Img $_img){
-			$this->img = $_img;
+		public function getId_ocorrencia(){
+			return $this->id_ocorrencia;
+		}
+		public function setId_ocorrencia($id_ocorrencia){
+			$this->id_ocorrencia = $id_ocorrencia;
+		}
+		public function getNome_usuario(){
+			return $this->nome_usuario;
+		}
+		public function setNome_usuario($nome_usuario){
+			$this->nome_usuario = $nome_usuario;
+		}
+		public function getCidade(){
+			return $this->cidade;
+		}
+		public function setCidade($cidade){
+			$this->cidade = $cidade;
+		}
+		public function getEstado(){
+			return $this->estado;
+		}
+		public function setEstado($estado){
+			$this->estado = $estado;
+		}
+		public function getReferencia_localizacao(){
+			return $this->referencia_localizacao;
+		}
+		public function setReferencia_localizacao($referencia_localizacao){
+			$this->referencia_localizacao = $referencia_localizacao;
+		}
+		public function getDescricao(){
+			return $this->descricao;
+		}
+		public function setDescricao($descricao){
+			$this->descricao = $descricao;
+		}
+		public function getLatitude(){
+			return $this->latitude;
+		}
+		public function setLatitude($latitude){
+			$this->latitude = $latitude;
+		}
+		public function getLongitude(){
+			return $this->longitude;
+		}
+		public function setLongitude($longitude){
+			$this->longitude = $longitude;
+		}
+		public function getHtml(){
+			return $this->html;
+		}
+		public function setHtml($html){
+			$this->html = $html;
 		}
 		public function getImg(){
 			return $this->img;
+		}
+		public function setImg(Img $_img){
+			$this->img = $_img;
 		}
 
 		public function __construct($_id_ocorrencia=NULL, $_nome_usuario=NULL, $_cidade=NULL, $_estado=NULL, $_referencia_localizacao=NULL, $_descricao=NULL, $_latitude=NULL, $_longitude=NULL){

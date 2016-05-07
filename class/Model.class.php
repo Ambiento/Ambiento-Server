@@ -5,8 +5,13 @@
 	include_once("Database.class.php");
 	class Model{
 		private $database;
+		private $ocorrencia;
+
 		function __construct(){
 			return;
+		}
+		public function setOcorrencia($_ocorrencia){
+			$this->ocorrencia = $_ocorrencia;
 		}
 		public function verifica_session(){
 			session_start();
@@ -45,9 +50,13 @@
 			    }
 			    return $response;
 		    }else{
-
+		    	return "Nenhuma Ocorrencia foi registrada ainda.";
 		    }
 		    return;
+		}
+		public function insert_ocorrencia(){
+			$pdo = Database::conexao();
+			$sql = "INSERT INTO Ocorrencia VALUES(NULL, ".$this->Ocorrencia->getNome_usuario().", ".$this->Ocorrencia->getCidade().", ".$this->Ocorrencia->getEstado().", ".$this->Ocorrencia->getReferencia_localizacao().", ".$this->Ocorrencia->getDescricao().", ".$this->Ocorrencia->getmg->getId_img().", $this->Ocorrencia->getLatitude(), $this->Ocorrencia->getLongitude())"
 		}
 	}
 ?>

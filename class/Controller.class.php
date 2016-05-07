@@ -10,14 +10,13 @@
 		private $adm;
 		private $model;
 		private $view;
-		private $ocorrencia;
 
 		function __construct(){
 			$this->model = new Model();
 			$this->view = new View();
 			return;
 		}
-		public function load_index(){
+		public function index(){
 			$this->view->render("<!DOCTYPE html>");
 			$this->view->render("<html>");
 			$this->view->render("<head>");
@@ -44,6 +43,10 @@
 			$this->view->render_file("view/footer.view.html");
 			$this->view->render("<body>");
 			$this->view->render("</html>");
+		}
+		public function cadastrar_ocorrencia(){
+			$model->setOcorrencia(new Ocorrencia(NULL, $_POST["nome"], $_POST["cidade"], $_POST["estado"], $_POST["referencia"], $_POST["descricao"], $_POST["latitude"], $_POST["longitude"]));
+			$model->insert_ocorrencia();	
 		}
 	}
 ?>
