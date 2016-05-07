@@ -26,13 +26,28 @@
 		    $query = $pdo->prepare($sql);
 		    $query->execute();
 		    if ($query->rowCount() >0){
+		    	$response = "";
 			    while($row = $query->fetch(PDO::FETCH_OBJ)){
-			        $response[] = $row->nome;
+			 		$response .= "<div class='ocorrencia'>".
+							"<h3>".$row->nome_usuario."</h3>".
+							"<ul class='list-group'>".
+								"<li class='list-group-item'>Cidade: ".$row->cidade."</li>".
+								"<li class='list-group-item'>Estado: ".$row->estado."</li>".
+								"<li class='list-group-item'>Referência de Localização: ".$row->referencia_localizacao."</li>".
+								"<li class='list-group-item'>".
+									"<h4>Descrição:</h4>".
+									"<p>".$row->descricao."</p>".
+								"</li>".
+								"<a href='acompanhar_ocorrencia.controller.php?idOcorrencia=".$row->idOcorrencia."' class='list-group-item list-group-item-info'>+Detalhes/Acompanhar Ocorrencia</a>".
+							"</ul>".
+							// "<img width='200' height='300' class='img-responsive img-thumbnail' src='img/ocorrencias_upload/".$row->caminho_img."'</img>".
+						"</div>";       
 			    }
 			    return $response;
 		    }else{
-		    	return false;
+
 		    }
+		    return;
 		}
 	}
 ?>

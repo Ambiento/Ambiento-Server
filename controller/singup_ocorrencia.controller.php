@@ -9,5 +9,5 @@
 	$img->generate_img($mysqli);
 	$ocorrencia->setImg($img);
 	$ocorrencia->insert_ocorrencia($mysqli);
-	$ocorrencia->add_html($mysqli);
+	// $ocorrencia->add_html($mysqli);
 ?>

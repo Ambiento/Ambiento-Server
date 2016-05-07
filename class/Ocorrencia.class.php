@@ -38,10 +38,10 @@
 			
 			//generate html file
 			//padrão do nome do arquivo
-			$nome_arquivo = "$this->cidade-$this->id_ocorrencia".date("d/m/Y-H:i:s").".html";
-			$this->html = new Html($nome_arquivo, $this->id_ocorrencia);
-			$html->generate_html();
-			$html->insert_html($mysqli);
+			// $nome_arquivo = "$this->cidade-$this->id_ocorrencia".date("d/m/Y-H:i:s").".html";
+			// $this->html = new Html($nome_arquivo, $this->id_ocorrencia);
+			// $html->generate_html();
+			// $html->insert_html($mysqli);
 		}
 	}
 ?>

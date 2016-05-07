@@ -18,25 +18,32 @@
 			return;
 		}
 		public function load_index(){
-			echo $this->view->head("view/head.view.html");
-?>
-	<body>
-<?php		
+			$this->view->render("<!DOCTYPE html>");
+			$this->view->render("<html>");
+			$this->view->render("<head>");
+			$this->view->render_file("view/head.view.html");
+			$this->view->render("</head>");
+			$this->view->render("<body>");
 			if($this->model->verifica_session()){
-				echo $this->view->load("view/navbar.logado.view.html");
-				$ocorrencias = $this->model->select_ocorrencias();
-				if(!$ocorrencias){
-					echo "Sem ocorrencias";
-				}else{
-					print_r($ocorrencias);
-				}
+				$this->view->render_file("view/navbar.logado.view.html");
+				$this->view->render("<div class='container'>");
+				$this->view->render("<div id='left' class='col-md-3'>");	
+				$this->view->render("<h2>");
+				$this->view->render("Bem vindo!");
+				$this->view->render("</h2>");
+				$this->view->render("</div>");
+				$this->view->render("<div id='center' class='col-md-9'>");
+				$this->view->render($this->model->select_ocorrencias());
 			}else{
-				echo $this->view->load("view/navbar.deslogado.view.html");
+				$this->view->render_file("view/navbar.deslogado.view.html");
+				$this->view->render_file("view/container.deslogado.view.html");
 			}
-			echo $this->view->footer("view/footer.view.html");
-?>
-	</body>
-<?php
+
+			$this->view->render("</div>");
+			$this->view->render("</div>");
+			$this->view->render_file("view/footer.view.html");
+			$this->view->render("<body>");
+			$this->view->render("</html>");
 		}
 	}
 ?>

@@ -6,16 +6,11 @@
 		public function __construct(){
 			return;
 		}
-		public function load($_filename){
-			return file_get_contents($_filename);
+		public function render_file($_filename){
+			echo file_get_contents($_filename);
 		}
-		public function head($_headfile){
-			$response = $this->load($_headfile);
-			return $response;
-		}
-		public function footer($_footerfile){
-			$response = $this->load($_footerfile);
-			return $response;
+		public function render($_content){
+			echo $_content."\n";
 		}
 	}
 ?>
