@@ -35,7 +35,6 @@
 				$this->view->render_file("view/navbar.deslogado.view.html");
 				$this->view->render_file("view/container.deslogado.view.html");
 			}
-
 			$this->view->render("</div>");
 			$this->view->render("</div>");
 			$this->view->render_file("view/footer.view.html");

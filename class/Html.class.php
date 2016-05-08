@@ -6,18 +6,32 @@
 		private $id_html;
 		private $nome_arquivo;
 		private $id_ocorrencia;
+		
+		public function getId_html(){
+			return $this->id_html;
+		}
+		public function setId_html($id_html){
+			$this->id_html = $id_html;
+		}
+		public function getNome_arquivo(){
+			return $this->nome_arquivo;
+		}
+		public function setNome_arquivo($nome_arquivo){
+			$this->nome_arquivo = $nome_arquivo;
+		}
+		public function getId_ocorrencia(){
+			return $this->id_ocorrencia;
+		}
+		public function setId_ocorrencia($id_ocorrencia){
+			$this->id_ocorrencia = $id_ocorrencia;
+		}
 
-		public function __construct($_id_html, $_nome_arquivo, $_id_ocorrencia){
-			$this->id_html = $_id_html;
-			$this->nome_arquivo = $_nome_arquivo;
+		public function __construct($_id_ocorrencia){
 			$this->id_ocorrencia = $_id_ocorrencia;
 		}
 
 		public function generate_html(){
-
-		}
-		public function insert_html($mysqli){
-			
+			//Gerar ṕágina da ocorrencia
 		}
 	}
 ?>

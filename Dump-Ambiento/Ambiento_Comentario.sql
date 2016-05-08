@@ -16,26 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Img`
+-- Table structure for table `Comentario`
 --
 
-DROP TABLE IF EXISTS `Img`;
+DROP TABLE IF EXISTS `Comentario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Img` (
-  `idImg` int(11) NOT NULL AUTO_INCREMENT,
-  `caminho` varchar(50) NOT NULL,
-  PRIMARY KEY (`idImg`)
+CREATE TABLE `Comentario` (
+  `idComentario` int(11) NOT NULL,
+  `Conteudo` varchar(50) NOT NULL,
+  `idOcorrencia` int(11) NOT NULL,
+  PRIMARY KEY (`idComentario`,`idOcorrencia`),
+  KEY `fk_Comentario_Ocorrencia1_idx` (`idOcorrencia`),
+  CONSTRAINT `fk_Comentario_Ocorrencia1` FOREIGN KEY (`idOcorrencia`) REFERENCES `Ocorrencia` (`idOcorrencia`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Img`
+-- Dumping data for table `Comentario`
 --
 
-LOCK TABLES `Img` WRITE;
-/*!40000 ALTER TABLE `Img` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Img` ENABLE KEYS */;
+LOCK TABLES `Comentario` WRITE;
+/*!40000 ALTER TABLE `Comentario` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Comentario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

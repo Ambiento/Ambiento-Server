@@ -14,6 +14,9 @@
 		public function getId_img(){
 			return $this->id_img;
 		}
+		public function setId_img($_id_img){
+			$this->id_img = $_id_img;
+		}
 
 		public function select_imgbyid($_id_img, $mysqli){
 			$sql = "SELECT caminho FROM Img WHERE idImg = $_id_img";
@@ -21,22 +24,13 @@
 			$linha = $resultado->fetch_array();
 			$this->caminho = $linha["caminho"];
 		}
-		public function generate_img($mysqli){
-		// $this->caminho = "caminho";
+		public function generate_img($pdo){
 			$this->caminho = sha1(uniqid(time())).".png";
-		
-		// gerar arquivo
 		    $binary=base64_decode($this->base);
-		    // Images will be saved under 'www/imgupload/uplodedimages' folder
 		    $file = fopen('../img/ocorrencias_upload/'.$this->caminho, 'wb');
-		    print_r($file);
-		    // Create File
 		    fwrite($file, $binary);
 		    fclose($file);
-
-			$query = "INSERT INTO Img VALUES(null, '$this->caminho')";
-			$mysqli->query($query);
-			$this->id_img = $mysqli->insert_id;
+			return;
 		}
 	}
 ?>
