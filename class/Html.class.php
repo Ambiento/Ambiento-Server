@@ -6,6 +6,11 @@
 		private $id_html;
 		private $nome_arquivo;
 		private $id_ocorrencia;
+
+		public function __construct($id_ocorrencia, $nome_arquivo){
+			$this->id_ocorrencia = $id_ocorrencia;
+			$this->id_ocorrencia = $nome_arquivo;
+		}
 		
 		public function getId_html(){
 			return $this->id_html;
@@ -26,12 +31,9 @@
 			$this->id_ocorrencia = $id_ocorrencia;
 		}
 
-		public function __construct($_id_ocorrencia){
-			$this->id_ocorrencia = $_id_ocorrencia;
-		}
-
 		public function generate_html(){
 			//Gerar ṕágina da ocorrencia
+			
 		}
 	}
 ?>

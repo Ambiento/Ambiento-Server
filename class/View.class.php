@@ -10,7 +10,7 @@
 			echo file_get_contents($_filename);
 		}
 		public function render($_content){
-			echo $_content."\n";
+			echo $_content;
 		}
 	}
 ?>

@@ -24,7 +24,7 @@
 			$linha = $resultado->fetch_array();
 			$this->caminho = $linha["caminho"];
 		}
-		public function generate_img($pdo){
+		public function generate_img(){
 			$this->caminho = sha1(uniqid(time())).".png";
 		    $binary=base64_decode($this->base);
 		    $file = fopen('../img/ocorrencias_upload/'.$this->caminho, 'wb');

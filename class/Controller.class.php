@@ -30,7 +30,8 @@
 				$this->view->render("</h2>");
 				$this->view->render("</div>");
 				$this->view->render("<div id='center' class='col-md-9'>");
-				$this->view->render($this->model->select_ocorrencias());
+				$this->model->setOcorrencia(new Ocorrencia());
+				$this->view->render($this->model->getOcorrencia()->select_ocorrencias());
 			}else{
 				$this->view->render_file("view/navbar.deslogado.view.html");
 				$this->view->render_file("view/container.deslogado.view.html");
@@ -38,12 +39,12 @@
 			$this->view->render("</div>");
 			$this->view->render("</div>");
 			$this->view->render_file("view/footer.view.html");
-			$this->view->render("<body>");
+			$this->view->render("</body>");
 			$this->view->render("</html>");
 		}
 		public function cadastrar_ocorrencia(){
 			$this->model->setOcorrencia(new Ocorrencia(NULL, $_POST["nome"], $_POST["cidade"], $_POST["estado"], $_POST["referencia"], $_POST["descricao"], $_POST["latitude"], $_POST["longitude"]));
-			$model->insert_ocorrencia();
+			$this->model->getOcorrencia()->insert_ocorrencia();
 		}
 	}
 ?>
