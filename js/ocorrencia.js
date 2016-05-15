@@ -1,11 +1,7 @@
-// Main execution
-$(document).ready(function() {
-	$("#form_comentario").submit(function(){
-		alert("COmentando");
-		var dados = $(this).serialize();
-		$.ajax({
-			// controller/publicar_comentario.controller.php?idOcorrencia=1
-			// POST
-		});
-	});
-});
+//Functions
+function load_comentarios(idOcorrencia){
+	console.log(idOcorrencia);
+}
+function comment(idOcorrencia){
+	console.log(idOcorrencia);
+}

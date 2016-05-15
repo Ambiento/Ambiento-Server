@@ -8,7 +8,6 @@
 		<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
 		<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
 		<script type='text/javascript' src='js/ocorrencia.js'></script>
-		<script type='text/javascript' src='js/script.js'></script>
 		<link rel='stylesheet' href='css/style.css'>
 		<link rel='stylesheet' href='css/ocorrencia.css'>
 	</head>
@@ -53,7 +52,7 @@
 							</li>
 						</ul>
 						<h2>Publicar</h2>
-						<form id='form_comentario'>
+						<form id='form_comentario' action='#'>
 							<textarea name='conteudo' required='true' rows='5' style='width:100%'></textarea>
 						   	<button id='bt_comentar' type='submit'>Comentar</button>
 						</form>
@@ -74,9 +73,10 @@
 	<script src='http://maps.google.com/maps/api/js'></script>
 	<script type='text/javascript' src='js/gmap/gmap.js'></script>
 	<script type='text/javascript'>
+		// Main execution
 		$(document).ready(function() {
-			var idOcorrencia = 1//id da ocorrencia 
-			load_comentarios(idOcorrencia);
+			//load map
+			idOcorrencia = 1;
 			map = new GMaps({
 				div: '#map',
 				lat: -29.959500,
@@ -89,6 +89,10 @@
 				infoWindow: {
 					content : 'Local da Ocorrencia' 
 				}
+			});
+			load_comentarios(idOcorrencia);
+			$("#form_comentario").submit(function(){
+				comment(idOcorrencia);
 			});
 		});
 	</script>
