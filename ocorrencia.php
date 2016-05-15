@@ -1,3 +1,8 @@
+<?php
+	$idOcorrencia = 1;
+	$lat = -29.959500;
+	$long = -51.623750;	
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -52,7 +57,7 @@
 							</li>
 						</ul>
 						<h2>Publicar</h2>
-						<form id='form_comentario' action='#'>
+						<form method='POST' id='form_comentario' action='controller/publicar_comentario.controller.php?idOcorrencia=<?php echo $idOcorrencia ?>'>
 							<textarea name='conteudo' required='true' rows='5' style='width:100%'></textarea>
 						   	<button id='bt_comentar' type='submit'>Comentar</button>
 						</form>
@@ -76,24 +81,21 @@
 		// Main execution
 		$(document).ready(function() {
 			//load map
-			idOcorrencia = 1;
+			idOcorrencia = <?php echo $idOcorrencia ?>;
 			map = new GMaps({
 				div: '#map',
-				lat: -29.959500,
-				lng: -51.623750
+				lat: <?php echo $lat ?>,
+				lng: <?php echo $long ?>
 			});
 			map.addMarker({
-				lat: -29.959500,
-				lng: -51.623750,
+				lat: <?php echo $lat ?>,
+				lng: <?php echo $long ?>,
 				title: 'Local',
 				infoWindow: {
 					content : 'Local da Ocorrencia' 
 				}
 			});
 			load_comentarios(idOcorrencia);
-			$("#form_comentario").submit(function(){
-				comment(idOcorrencia);
-			});
 		});
 	</script>
 </html>

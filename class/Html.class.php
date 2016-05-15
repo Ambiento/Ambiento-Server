@@ -4,6 +4,7 @@
 	*/
 	class Html{
 		private $id_html;
+		private $content;
 		private $nome_arquivo;
 		private $id_ocorrencia;
 
@@ -11,7 +12,13 @@
 			$this->id_ocorrencia = $id_ocorrencia;
 			$this->id_ocorrencia = $nome_arquivo;
 		}
-		
+
+		public function getContent(){
+			return $this->content;
+		}
+		public function setContent($content){
+			$this->content = $content;
+		}
 		public function getId_html(){
 			return $this->id_html;
 		}
@@ -33,7 +40,6 @@
 
 		public function generate_html(){
 			//Gerar ṕágina da ocorrencia
-			
 		}
 	}
 ?>
