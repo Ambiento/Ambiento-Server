@@ -104,10 +104,10 @@
 		public function insert_ocorrencia(){
 			$this->pdo = Database::conexao();
 			$this->insert_img();
-			$sql = "INSERT INTO Ocorrencia VALUES(NULL,".$this->ocorrencia->getNome_usuario().",".$this->ocorrencia->getCidade().",".$this->ocorrencia->getEstado().",".$this->ocorrencia->getReferencia_localizacao().",".$this->ocorrencia->getDescricao().",".$this->img->getId_img().",".$this->ocorrencia->getLatitude().",".$this->ocorrencia->getLongitude().")";
+			$sql = "INSERT INTO Ocorrencia VALUES(NULL,'".$this->nome_usuario."','".$this->cidade."','".$this->estado."','".$this->referencia_localizacao."','".$this->descricao."',".$this->img->getId_img().",'".$this->latitude."','".$this->longitude."')";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
-			$this->ocorrencia->setId_ocorrencia($stmt->insert_id);
+			$this->setId_ocorrencia($this->pdo->lastInsertId());
 			$this->insert_html();
 		}
 		public function select_ocorrencias(){
@@ -141,7 +141,7 @@
 		}
 
 		public function insert_html(){
-			$this->html = new Html($this->id_ocorrencia, "$this->cidade-$this->id_ocorrencia-".date("d/m/Y-H:i:s").".html");
+			$this->html = new Html($this->id_ocorrencia, $this->cidade."-".$this->id_ocorrencia."-".date("d/m/Y-H:i:s").".html");
 			$this->html->setContent("<!DOCTYPE html>
 			<html>
 				<head>
@@ -239,7 +239,8 @@
 				</script>
 			</html>");
 			$this->html->generate_html();
-			$sql = "INSERT INTO Html VALUES(NULL,'".$this->html->getNome_arquivo()."',".$this->html->getId_ocorrencia().")";
+			$sql = "INSERT INTO Html VALUES(NULL, '".$this->html->getNome_arquivo()."',".$this->html->getId_ocorrencia().")";
+			echo $sql;
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
 		}
@@ -249,7 +250,7 @@
 			$sql = "INSERT INTO Img VALUES(NULL,'".$this->img->getCaminho()."')";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
-			$this->img->setId_img($stmt->insert_id);
+			$this->img->setId_img($this->pdo->lastInsertId());
 		}
 	}
 ?>

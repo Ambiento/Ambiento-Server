@@ -10,7 +10,7 @@
 
 		public function __construct($id_ocorrencia, $nome_arquivo){
 			$this->id_ocorrencia = $id_ocorrencia;
-			$this->id_ocorrencia = $nome_arquivo;
+			$this->nome_arquivo = $nome_arquivo;
 		}
 
 		public function getContent(){
