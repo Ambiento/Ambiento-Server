@@ -1,5 +1,7 @@
 <?php
-	$idOcorrencia = 1;
+	$idOcorrencia = $_GET["id"];
+	$ocorrencia = new Ocorrencia($_GET["id"]);
+	// $ocorrencia->select_ocorrencia();
 	$lat = -29.959500;
 	$long = -51.623750;	
 ?>
