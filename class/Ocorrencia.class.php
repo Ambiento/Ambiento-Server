@@ -78,19 +78,19 @@
 		public function getImg(){
 			return $this->img;
 		}
-		public function setImg(Img $_img){
-			$this->img = $_img;
+		public function setImg(Img $img){
+			$this->img = $img;
 		}
 
-		public function __construct($_id_ocorrencia=NULL, $_nome_usuario=NULL, $_cidade=NULL, $_estado=NULL, $_referencia_localizacao=NULL, $_descricao=NULL, $_latitude=NULL, $_longitude=NULL){
-			$this->id_ocorrencia = $_id_ocorrencia;
-			$this->nome_usuario = $_nome_usuario;
-			$this->cidade = $_cidade;
-			$this->estado = $_estado;
-			$this->referencia_localizacao = $_referencia_localizacao;
-			$this->descricao = $_descricao;
-			$this->latitude = $_latitude;
-			$this->longitude = $_longitude;
+		public function __construct($id_ocorrencia=NULL, $nome_usuario=NULL, $cidade=NULL, $estado=NULL, $referencia_localizacao=NULL, $descricao=NULL, $latitude=NULL, $longitude=NULL){
+			$this->id_ocorrencia = $id_ocorrencia;
+			$this->nome_usuario = $nome_usuario;
+			$this->cidade = $cidade;
+			$this->estado = $estado;
+			$this->referencia_localizacao = $referencia_localizacao;
+			$this->descricao = $descricao;
+			$this->latitude = $latitude;
+			$this->longitude = $longitude;
 		}
 		public function insert_ocorrencia(){
 			$this->pdo = Database::conexao();
@@ -118,7 +118,7 @@
 									"<h4>Descrição:</h4>".
 									"<p>".$row->descricao."</p>".
 								"</li>".
-								"<a href='ocorrencia.php?id=".$row->idOcorrencia."' class='list-group-item list-group-item-info'>+Detalhes/Acompanhar Ocorrencia</a>".
+								"<a href='detalhe.php?id=".$row->idOcorrencia."' class='list-group-item list-group-item-info'>+Detalhes/Acompanhar Ocorrencia</a>".
 							"</ul>".
 							// "<img width='200' height='300' class='img-responsive img-thumbnail' src='img/ocorrencias_upload/".$row->caminho_img."'</img>".
 						"</div>";       
@@ -129,28 +129,16 @@
 		    }
 			return;
 		}
-		public function select_ocorrencia(){
-			$sql = "SELECT * FROM Ocorrencia";
-			$this->img = new Img();
-			// print_r($resultado);
-			if ($resultado->num_rows > 0) {
-				for ($i=0; $linha = $resultado->fetch_array() ; $i++) { 
-					$response[$i]["idOcorrencia"] = $linha["idOcorrencia"];
-					$response[$i]["nome_usuario"] = $linha["nome_usuario"];
-					$response[$i]["cidade"] = $linha["cidade"];
-					$response[$i]["estado"] = $linha["estado"];
-					$response[$i]["referencia_localizacao"] = $linha["referencia_localizacao"];
-					$response[$i]["descricao"] = $linha["descricao"];
-					$response[$i]["latitude"] = $linha["latitude"];
-					$response[$i]["longitude"] = $linha["longitude"];
-					// $response[$i]["id_img"] = $linha["idImg"];
-					$this->img->select_imgbyid($linha["idImg"], $mysqli);
-					$response[$i]["caminho_img"] = $this->img->getCaminho();
-				}
-			}else{
-				$response[] = "Sem Ocorrencias!";
-			}
-			return json_encode($response);
+		public function select_ocorrenciaById(){
+			$this->pdo = Database::conexao();
+		    $sql = "SELECT * FROM Ocorrencia WHERE idOcorrencia = $this->id_ocorrencia";
+		    $stmt = $this->pdo->prepare($sql);
+		    $stmt->execute();
+		    if ($stmt->rowCount() == 1){
+		    	$row = $stmt->fetch(PDO::FETCH_OBJ);
+		    	//desenha o quadrinho da ocorrencia
+		    	print_r($row);
+		    }
 		}
 		private function insert_img(){
 			$this->img = new Img($_POST["img"]);

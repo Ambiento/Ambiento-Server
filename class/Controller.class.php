@@ -51,5 +51,19 @@
 			$this->model->singin_adm();
 			header("location: ../index.php");
 		}
+		public function detalhe(){
+			$this->view->render("<!DOCTYPE html>");
+			$this->view->render("<html>");
+			$this->view->render("<head>");
+			$this->view->render_file("view/head.view.html");
+			$this->view->render("</head>");
+			$this->view->render("<body>");
+			$this->view->render_file("view/navbar.detalhe.view.html");
+			$this->model->setOcorrencia(new Ocorrencia($_GET["id"]));
+			$this->view->render($this->model->getOcorrencia()->select_ocorrenciaById());
+			$this->view->render_file("view/footer.view.html");
+			$this->view->render("</body>");
+			$this->view->render("</html>");
+		}
 	}
 ?>
