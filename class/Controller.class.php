@@ -46,5 +46,10 @@
 			$this->model->setOcorrencia(new Ocorrencia(NULL, $_POST["nome"], $_POST["cidade"], $_POST["estado"], $_POST["referencia"], $_POST["descricao"], $_POST["latitude"], $_POST["longitude"]));
 			$this->model->getOcorrencia()->insert_ocorrencia();
 		}
+		public function singin_adm(){
+			$this->model->setAdm(new  Administrador($_POST["email"], sha1($_POST["senha"])));
+			$this->model->singin_adm();
+			header("location: ../index.php");
+		}
 	}
 ?>

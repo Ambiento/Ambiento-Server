@@ -6,7 +6,14 @@
 		private $ocorrencia;
 		private $view;
 		private $pdo;
+		private $adm;
 
+		public function getAdm(){
+			return $this->adm;
+		}
+		public function setAdm($adm){
+			$this->adm = $adm;
+		}
 		public function getOcorrencia(){
 			return $this->ocorrencia;
 		}
@@ -51,6 +58,20 @@
 			}else{
 			// Nao logado
 				return false;
+			}
+		}
+		public function singin_adm(){
+			session_start();
+			if ($this->adm->singin()) {	
+				$_SESSION["nome"] = $this->adm->getNome();
+				$_SESSION["sobrenome"] = $this->adm->getSobrenome();
+				$_SESSION["email"] = $this->adm->getEmail();
+				$_SESSION["img"] = $this->adm->getImg();
+				$_SESSION["idAdministrador"] = $this->adm->getIdAdministrador();
+				$_SESSION["idOrgao"] = $this->adm->getIdOrgao();
+				$_SESSION["singin"] = true;
+			}else{
+				session_unset();
 			}
 		}
 	}
