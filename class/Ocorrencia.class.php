@@ -137,6 +137,30 @@
 		    if ($stmt->rowCount() == 1){
 		    	$row = $stmt->fetch(PDO::FETCH_OBJ);
 		    	//desenha o quadrinho da ocorrencia
+		    	echo "<div class='ocorrencia'>
+					<h3>saida[i]['nome_usuario']</h3>
+					<ul class='list-group'>
+						<li class='list-group-item'>Cidade: saida[i]['cidade']</li>
+						<li class='list-group-item'>Estado: saida[i]['estado']</li>
+						<li class='list-group-item'>Referência de Localização: saida[i]['referencia_localizacao']</li>
+						<li class='list-group-item'>
+							<h4>Descrição:</h4>
+							<p>saida[i]['descricao']</p>
+						</li>
+						<li class='list-group-item'>
+							<h4>Registro Fotográfico da ocorrencia:</h4>
+							<img width='200' height='300' class='img-responsive img-thumbnail' src=''</img>
+						</li>
+						<li class='list-group-item'>
+							<div id='map'></div>
+						</li>
+					</ul>
+					<h2>Publicar</h2>
+					<form method='POST' id='form_comentario' action='controller/publicar_comentario.controller.php?idOcorrencia=<?php echo $idOcorrencia ?>'>
+						<textarea name='conteudo' required='true' rows='5' style='width:100%'></textarea>
+					   	<button id='bt_comentar' type='submit'>Comentar</button>
+					</form>
+				</div>";
 		    	print_r($row);
 		    }
 		}

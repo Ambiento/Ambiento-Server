@@ -59,8 +59,16 @@
 			$this->view->render("</head>");
 			$this->view->render("<body>");
 			$this->view->render_file("view/navbar.detalhe.view.html");
+			$this->view->render("<div class='container'>");
+			$this->view->render("<div id='center' class='col-md-7'>");
 			$this->model->setOcorrencia(new Ocorrencia($_GET["id"]));
 			$this->view->render($this->model->getOcorrencia()->select_ocorrenciaById());
+			$this->view->render("</div>");
+			$this->view->render("<div id='comentarios' class='col-md-5'>");
+			// COMENTÁRIOS AQUI
+			$this->view->render("Chamada do método dos comentários aqui");
+			$this->view->render("</div>");
+			$this->view->render("</div>");
 			$this->view->render_file("view/footer.view.html");
 			$this->view->render("</body>");
 			$this->view->render("</html>");
