@@ -78,27 +78,5 @@
 			<a rel='license' href='http://creativecommons.org/licenses/by-nc-nd/4.0/'><img alt='Licença Creative Commons' style='border-width:0' src='https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png' /></a><br /><span xmlns:dct='http://purl.org/dc/terms/' property='dct:title'><!-- Ambiento</span> de <span xmlns:cc='http://creativecommons.org/ns#' property='cc:attributionName'>Igor Phelype Guimarães</span> está licenciado com uma Licença <a rel='license' href='http://creativecommons.org/licenses/by-nc-nd/4.0/'>Creative Commons - Atribuição-NãoComercial-SemDerivações 4.0 Internacional --></a>
 		</footer>
 	</body>
-	<script src='http://maps.google.com/maps/api/js'></script>
-	<script type='text/javascript' src='js/gmap/gmap.js'></script>
-	<script type='text/javascript'>
-		// Main execution
-		$(document).ready(function() {
-			//load map
-			idOcorrencia = <?php echo $idOcorrencia ?>;
-			map = new GMaps({
-				div: '#map',
-				lat: <?php echo $lat ?>,
-				lng: <?php echo $long ?>
-			});
-			map.addMarker({
-				lat: <?php echo $lat ?>,
-				lng: <?php echo $long ?>,
-				title: 'Local',
-				infoWindow: {
-					content : 'Local da Ocorrencia' 
-				}
-			});
-			load_comentarios(idOcorrencia);
-		});
-	</script>
+	<script src='http://maps.google.com/maps/api/js'></script><script type='text/javascript' src='js/gmap/gmap.js'></script><script type='text/javascript'>$(document).ready(function() {map = new GMaps({div: '#map',lat: -21.7058,lng: -43.4188});map.addMarker({lat: -21.7058,lng: -43.4188,title: 'Local',infoWindow: {content : 'bzbzb'}});});</script>
 </html>

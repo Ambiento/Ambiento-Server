@@ -52,13 +52,18 @@
 			header("location: ../index.php");
 		}
 		public function detalhe(){
+			session_start();
 			$this->view->render("<!DOCTYPE html>");
 			$this->view->render("<html>");
 			$this->view->render("<head>");
-			$this->view->render_file("view/head.view.html");
+			$this->view->render_file("view/head.detalhe.view.html");
 			$this->view->render("</head>");
 			$this->view->render("<body>");
-			$this->view->render_file("view/navbar.detalhe.view.html");
+			if(!empty($_SESSION["singin"])){
+				$this->view->render_file("view/navbar.detalhe.logado.view.html");
+			}else{
+				$this->view->render_file("view/navbar.detalhe.deslogado.html");
+			}
 			$this->view->render("<div class='container'>");
 			$this->view->render("<div id='center' class='col-md-7'>");
 			$this->model->setOcorrencia(new Ocorrencia($_GET["id"]));
@@ -71,7 +76,14 @@
 			$this->view->render("</div>");
 			$this->view->render_file("view/footer.view.html");
 			$this->view->render("</body>");
+			$this->view->render($this->model->getOcorrencia()->gerar_scriptgmap());
 			$this->view->render("</html>");
+		}
+		public function publicar_comentario(){
+			session_start();
+			$this->model->setComentario(new Comentario($_SESSION["idAdministrador"], $_GET["idOcorrencia"], $_POST["conteudo"]));
+			$this->model->getComentario()->insert_comentario();
+			
 		}
 	}
 ?>

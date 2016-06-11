@@ -1,0 +1,10 @@
+#map{
+	width: 500px;
+	height: 400px;
+}
+#form_comentario input{
+	width: 100%;
+}
+#form_comentario textarea{
+	width: 100%;
+}

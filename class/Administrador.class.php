@@ -9,9 +9,10 @@
 		private $idOrgao;
 		private $pdo;
 
-		public function __construct($_email=NULL, $_senha=NULL){
+		public function __construct($_email=NULL, $_senha=NULL, $_idAdministrador=NULL){
 			$this->email = $_email;
 			$this->senha = $_senha;
+			$this->idAdministrador = $_idAdministrador;
 		}
 		public function getIdAdministrador(){
 			return $this->idAdministrador;

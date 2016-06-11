@@ -4,6 +4,7 @@
 	*/
 	class Model{
 		private $ocorrencia;
+		private $comentario;
 		private $view;
 		private $pdo;
 		private $adm;
@@ -13,6 +14,12 @@
 		}
 		public function setAdm($adm){
 			$this->adm = $adm;
+		}
+		public function getComentario(){
+			return $this->comentario;
+		}
+		public function setComentario($comentario){
+			$this->comentario = $comentario;
 		}
 		public function getOcorrencia(){
 			return $this->ocorrencia;
@@ -37,12 +44,6 @@
 		}
 		public function setPdo($pdo){
 			$this->pdo = $pdo;
-		}
-		public function getHtml(){
-			return $this->html;
-		}
-		public function setHtml($html){
-			$this->html = $html;
 		}
 
 		function __construct(){

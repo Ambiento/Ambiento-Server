@@ -131,38 +131,51 @@
 		}
 		public function select_ocorrenciaById(){
 			$this->pdo = Database::conexao();
-		    $sql = "SELECT * FROM Ocorrencia WHERE idOcorrencia = $this->id_ocorrencia";
+		    $sql = "SELECT * FROM Ocorrencia INNER JOIN Img ON Img.idImg = Ocorrencia.idOcorrencia WHERE idOcorrencia = $this->id_ocorrencia";
 		    $stmt = $this->pdo->prepare($sql);
 		    $stmt->execute();
+		    $response = "";
 		    if ($stmt->rowCount() == 1){
 		    	$row = $stmt->fetch(PDO::FETCH_OBJ);
+			    $this->latitude = $row->latitude;
+			    $this->longitude = $row->longitude;
+			    $this->referencia_localizacao = $row->referencia_localizacao;
 		    	//desenha o quadrinho da ocorrencia
-		    	echo "<div class='ocorrencia'>
-					<h3>saida[i]['nome_usuario']</h3>
-					<ul class='list-group'>
-						<li class='list-group-item'>Cidade: saida[i]['cidade']</li>
-						<li class='list-group-item'>Estado: saida[i]['estado']</li>
-						<li class='list-group-item'>Referência de Localização: saida[i]['referencia_localizacao']</li>
-						<li class='list-group-item'>
-							<h4>Descrição:</h4>
-							<p>saida[i]['descricao']</p>
-						</li>
-						<li class='list-group-item'>
-							<h4>Registro Fotográfico da ocorrencia:</h4>
-							<img width='200' height='300' class='img-responsive img-thumbnail' src=''</img>
-						</li>
-						<li class='list-group-item'>
-							<div id='map'></div>
-						</li>
-					</ul>
-					<h2>Publicar</h2>
-					<form method='POST' id='form_comentario' action='controller/publicar_comentario.controller.php?idOcorrencia=<?php echo $idOcorrencia ?>'>
-						<textarea name='conteudo' required='true' rows='5' style='width:100%'></textarea>
-					   	<button id='bt_comentar' type='submit'>Comentar</button>
-					</form>
-				</div>";
-		    	print_r($row);
+		    	$response = "<div class='ocorrencia'>".
+					"<h3>$row->nome_usuario</h3>".
+					"<ul class='list-group'>".
+						"<li class='list-group-item'>Cidade: $row->cidade</li>".
+						"<li class='list-group-item'>Estado: $row->estado</li>".
+						"<li class='list-group-item'>Referência de Localização: $row->referencia_localizacao</li>".
+						"<li class='list-group-item'>".
+							"<h4>Descrição:</h4>".
+							"<p>$row->descricao</p>".
+						"</li>".
+						"<li class='list-group-item'>".
+							"<h4>Registro Fotográfico da ocorrencia:</h4>".
+							"<img width='200' height='300' class='img-responsive img-thumbnail' src='img/ocorrencias_upload/$row->caminho'/>".
+						"</li>".
+						"<li class='list-group-item'>".
+							"<div id='map'></div>".
+						"</li>".
+					"</ul>";
+				if (!empty($_SESSION["singin"])) {
+					$response .= "<h2>Publicar</h2>".
+						"<form method='POST' id='form_comentario' action='controller/publicar_comentario.controller.php?idOcorrencia=$row->idOcorrencia'>".
+							"<textarea placeholder='Conteúdo...' name='conteudo' required='true' rows='5'></textarea>".
+					   		"<button id='bt_comentar' type='submit'>Comentar</button>".
+						"</form>";
+				}else{
+					// $response .= "<form method='POST' id='form_comentario' action='controller/publicar_comentario.controller.php?idOcorrencia=$row->idOcorrencia'>".
+					// 	"<input type='text' name='email' placeholder='Digite seu email...'/>".
+					// 	"<textarea placeholder='Conteúdo...' name='conteudo' required='true' rows='5'></textarea>".
+					//    	"<button id='bt_comentar' type='submit'>Comentar</button>".
+					// "</form>";
+				}
+
+				$response .= "</div>";
 		    }
+		    return $response;
 		}
 		private function insert_img(){
 			$this->img = new Img($_POST["img"]);
@@ -171,6 +184,28 @@
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
 			$this->img->setId_img($this->pdo->lastInsertId());
+		}
+		public function gerar_scriptgmap(){
+			return 	"<script src='http://maps.google.com/maps/api/js'></script>".
+					"<script type='text/javascript' src='js/gmap/gmap.js'></script>".
+					"<script type='text/javascript'>".
+						"$(document).ready(function() {".
+							"map = new GMaps({".
+								"div: '#map',".
+								"lat: $this->latitude,".
+								"lng: $this->longitude".
+							"});".
+							"map.addMarker({".
+								"lat: $this->latitude,".
+								"lng: $this->longitude,".
+								"title: 'Local',".
+								"infoWindow: {".
+									"content : '$this->referencia_localizacao'".
+								"}".
+							"});".
+							// "load_comentarios(idOcorrencia);".
+						"});".
+					"</script>";
 		}
 	}
 ?>
